@@ -125,8 +125,8 @@ def start():
                 json.dump(was_helper,f2)
             del was_helper, influencers_send
             logger.info(f'Выполнение скрипта завершено {time.strftime("%m-%d-%Y %H:%M:%S",time.gmtime(time.time()))}')
-            logger.info(f'Следующий запуск:{time.strftime("%m-%d-%Y %H:%M:%S",time.gmtime(start_time+86400))}')
-            time.sleep(86400-(time.time()-start_time))
+            logger.info(f'Следующий запуск:{time.strftime("%m-%d-%Y %H:%M:%S",time.gmtime(start_time+21600))}')
+            time.sleep(21600-(time.time()-start_time))
     except:
         bot.send_message(config.myid, traceback.format_exc())
 
