@@ -46,7 +46,7 @@ def start():
                                                                 headers={'Authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA','x-csrf-token': info[1]},
                                                                 cookies={' auth_token':info[0],' ct0':info[1]},
                                                                 data={"screen_name":'@'+nickname},
-                                                                timeout=5).json()
+                                                                timeout=10).json()
                     f+=1
                     if response['data']!={}:
                         userId=response['data']['user']['result']['rest_id']
@@ -56,7 +56,7 @@ def start():
                         response=session.get('https://twitter.com/i/api/graphql/Ki3smAiQ2sIr7jNW8zq51Q/Following?variables=%7B%22userId%22%3A%22'+userId+'%22%2C%22count%22%3A100%2C%22includePromotedContent%22%3Afalse%2C%22withSuperFollowsUserFields%22%3Atrue%2C%22withDownvotePerspective%22%3Afalse%2C%22withReactionsMetadata%22%3Afalse%2C%22withReactionsPerspective%22%3Afalse%2C%22withSuperFollowsTweetFields%22%3Afalse%7D&features=%7B%22dont_mention_me_view_api_enabled%22%3Atrue%2C%22interactive_text_enabled%22%3Afalse%2C%22responsive_web_uc_gql_enabled%22%3Afalse%2C%22vibe_tweet_context_enabled%22%3Afalse%2C%22responsive_web_edit_tweet_api_enabled%22%3Afalse%2C%22standardized_nudges_misinfo%22%3Afalse%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D',
                                             headers={'Authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA','x-csrf-token': info[1]},
                                             cookies={' auth_token':info[0],' ct0':info[1]},
-                                            timeout=5).json()
+                                            timeout=10).json()
                         f+=1
                         cursor=response['data']['user']['result']['timeline']['timeline']['instructions'][-1]['entries'][-2]['content']['value']
                         friends_count-=len(response['data']['user']['result']['timeline']['timeline']['instructions'][-1]['entries'])-2
@@ -74,7 +74,7 @@ def start():
                             response=session.get('https://twitter.com/i/api/graphql/Ki3smAiQ2sIr7jNW8zq51Q/Following?variables=%7B%22userId%22%3A%22'+userId+'%22%2C%22count%22%3A100%2C%22cursor%22%3A%22'+urllib.parse.quote(cursor,safe='')+'%22%2C%22includePromotedContent%22%3Afalse%2C%22withSuperFollowsUserFields%22%3Atrue%2C%22withDownvotePerspective%22%3Afalse%2C%22withReactionsMetadata%22%3Afalse%2C%22withReactionsPerspective%22%3Afalse%2C%22withSuperFollowsTweetFields%22%3Afalse%7D&features=%7B%22dont_mention_me_view_api_enabled%22%3Atrue%2C%22interactive_text_enabled%22%3Afalse%2C%22responsive_web_uc_gql_enabled%22%3Afalse%2C%22vibe_tweet_context_enabled%22%3Afalse%2C%22responsive_web_edit_tweet_api_enabled%22%3Afalse%2C%22standardized_nudges_misinfo%22%3Afalse%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D',
                                                 headers={'Authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA','x-csrf-token': info[1]},
                                                 cookies={' auth_token':info[0],' ct0':info[1]},
-                                                timeout=5).json()
+                                                timeout=10).json()
                             f+=1
                             cursor=response['data']['user']['result']['timeline']['timeline']['instructions'][-1]['entries'][-2]['content']['value']
                             if last_cursor==cursor or len(response['data']['user']['result']['timeline']['timeline']['instructions'][-1]['entries'])==2:
