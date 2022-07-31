@@ -49,6 +49,8 @@ def start():
                                                                 timeout=10).json()
                     f+=1
                     if response['data']!={}:
+                        if response['data']['user']['result']['legacy']['protected']:
+                            continue
                         userId=response['data']['user']['result']['rest_id']
                         friends_count=response['data']['user']['result']['legacy']['friends_count']
                         friends_count2=friends_count
