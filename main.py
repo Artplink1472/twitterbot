@@ -118,7 +118,7 @@ def start():
             for i in influencers_send:
                 message+=f'https://twitter.com/{i}\n'
             while message:
-                send=message[:message[:4096].rfind('\n')+1]
+                send=message[:message[:4096].rfind('\n')]
                 message=message[message[:4096].rfind('\n')+1:]
                 for user in config.rassilka:
                     bot.send_message(user, send)
